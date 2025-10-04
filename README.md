@@ -14,7 +14,7 @@ Incluye tres fases:
 
 ## Estructura del proyecto
 
-´´´
+```bash
 sentiment_analysis_project/
 │
 ├── data/
@@ -39,7 +39,7 @@ sentiment_analysis_project/
 ├── requirements.txt                    # Librerías necesarias
 ├── README.md
 └── run_pipeline.py                     # Script maestro para ejecutar todo
-´´´
+```
 
 ## Requisitos
 
@@ -49,36 +49,36 @@ CUDA (opcional, si se desea GPU)
 
 Instalar dependencias:
 
-´´´
+```bash
 pip install -r requirements.txt
-´´´
+```
 
 Uso
 1️⃣ Entrenar modelo inicial (Fase 1)
-´´´
+```bash
 python src/train_phase1.py
-´´´
+```
 
 El modelo se guardará en models/fase1.
 
 2️⃣ Fine-tuning en dataset de Sigüenza (Fase 2)
-´´´
+```bash
 python src/train_phase2.py
-´´´
+```
 
 El modelo se guardará en models/fase2.
 
 3️⃣ Generar PDF con resultados (Fase 3)
-´´´
+```bash
 python src/generate_report.py
-´´´
+```
 
 El PDF final se guardará en outputs/reporte_final_siguenza.pdf.
 
 4️⃣ Ejecutar todo el pipeline
-´´´
+```bash
 python run_pipeline.py
-´´´
+```
 
 Esto ejecuta las fases 1, 2 y 3 de manera automática.
 
