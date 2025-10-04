@@ -1,51 +1,52 @@
-# Sentiment Analysis Project - Restaurantes de Sigüenza
+# 🧠 Sentiment Analysis Project - Restaurantes de Sigüenza
 
-## Descripción
+## 📋 Descripción
 
-Este proyecto realiza un análisis de sentimiento sobre reseñas de restaurantes de Sigüenza, usando BERT en español.
-Incluye tres fases:
+Este proyecto realiza un **análisis de sentimiento** sobre reseñas de restaurantes de **Sigüenza**, utilizando **BERT en español**.  
+El pipeline completo incluye tres fases principales:
 
-- Fase 1: Entrenamiento inicial de un modelo BERT para clasificar reseñas como positiva o no positiva.
+- **Fase 1:** Entrenamiento inicial de un modelo BERT para clasificar reseñas como *positiva* o *no positiva*.  
+- **Fase 2:** *Fine-tuning* del modelo sobre un dataset específico de Sigüenza, congelando capas para evitar *overfitting*.  
+- **Fase 3:** Generación de un **PDF profesional** con resultados por restaurante, incluyendo gráficos, *wordclouds* y métricas de rendimiento.
 
-- Fase 2: Fine-tuning sobre el dataset específico de Sigüenza, congelando capas del modelo para evitar overfitting.
+---
 
-- Fase 3: Generación de un PDF de resultados por restaurante, con gráficos de distribución de sentimientos, ratings y wordclouds de elogios/críticas.
+## 📂 Estructura del proyecto
 
-
-## Estructura del proyecto
 
 ```bash
 sentiment_analysis_project/
 │
 ├── data/
-│   └── ResenasSiguenzaNuevo.xlsx       # Dataset de reseñas
+│ └── ResenasSiguenzaNuevo.xlsx # Dataset de reseñas
 │
 ├── models/
-│   └── fase1/                         # Modelo fase 1
-│   └── fase2/                         # Modelo fase 2 (fine-tuning)
+│ ├── fase1/ # Modelo fase 1
+│ └── fase2/ # Modelo fase 2 (fine-tuning)
 │
 ├── outputs/
-│   └── reporte_final_siguenza.pdf     # PDF final generado
+│ └── reporte_final_siguenza.pdf # PDF final generado
 │
 ├── src/
-│   ├── __init__.py
-│   ├── config.py                       # Configuración de rutas y device
-│   ├── utils.py                        # Funciones auxiliares
-│   ├── preprocess.py                   # Preprocesamiento y tokenización
-│   ├── train_phase1.py                 # Entrenamiento Fase 1
-│   ├── train_phase2.py                 # Fine-tuning Fase 2
-│   ├── generate_report.py              # Generación de PDF (Fase 3)
+│ ├── init.py
+│ ├── config.py # Configuración de rutas y device
+│ ├── utils.py # Funciones auxiliares
+│ ├── preprocess.py # Preprocesamiento y tokenización
+│ ├── train_phase1.py # Entrenamiento Fase 1
+│ ├── train_phase2.py # Fine-tuning Fase 2
+│ ├── generate_report.py # Generación de PDF (Fase 3)
 │
-├── requirements.txt                    # Librerías necesarias
+├── tests/
+│ └── test_utils.py # Pruebas unitarias para utils.py
+│
+├── requirements.txt # Librerías necesarias
 ├── README.md
-└── run_pipeline.py                     # Script maestro para ejecutar todo
+└── run_pipeline.py # Script maestro para ejecutar todo
 ```
+## ⚙️ Requisitos
 
-## Requisitos
-
-Python >= 3.9
-
-CUDA (opcional, si se desea GPU)
+- **Python >= 3.9**  
+- **CUDA (opcional)** para entrenamiento acelerado en GPU  
 
 Instalar dependencias:
 
@@ -53,7 +54,7 @@ Instalar dependencias:
 pip install -r requirements.txt
 ```
 
-Uso
+## 🚀 Uso
 1️⃣ Entrenar modelo inicial (Fase 1)
 ```bash
 python src/train_phase1.py
@@ -80,7 +81,23 @@ El PDF final se guardará en outputs/reporte_final_siguenza.pdf.
 python run_pipeline.py
 ```
 
-Esto ejecuta las fases 1, 2 y 3 de manera automática.
+Esto ejecuta las fases 1, 2 y 3 de manera secuencial.
+
+5️⃣ Ejecutar pruebas unitarias
+
+El proyecto incluye tests automáticos para verificar el correcto funcionamiento de las funciones auxiliares.
+
+Ejecutar todos los tests:
+
+```bash
+pytest
+```
+
+Ejecutar solo los tests de utilidades:
+
+```bash
+pytest tests/test_utils.py
+```
 
 ## Estructura de los datos
 
@@ -94,7 +111,7 @@ El dataset debe tener las siguientes columnas:
 
 Opcionalmente se pueden agregar más columnas, pero text y rating son obligatorias.
 
-## Funcionalidades
+## 📊 Funcionalidades principales
 
 - Clasificación de reseñas en positiva / no positiva.
 
@@ -110,7 +127,7 @@ Distribución de ratings y relación rating vs sentimiento
 
 - PDF profesional para presentar al cliente.
 
-## Buenas prácticas implementadas
+## 🧩 Buenas prácticas implementadas
 
 - Código modular y organizado por fases.
 
@@ -118,11 +135,17 @@ Distribución de ratings y relación rating vs sentimiento
 
 - Semilla fija (SEED) para reproducibilidad.
 
+- Tests unitarios en tests/test_utils.py.
+
 - Funciones auxiliares en utils.py (limpieza, métricas, mapping).
 
 - Tokenización y mapeo de labels robusto.
 
 - PDF con gráficas dinámicas y wordclouds.
+
+- Pipeline completo ejecutable desde run_pipeline.py.
+
+- Documentación clara y mantenible.
 
 ## Autor
 
