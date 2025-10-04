@@ -1,7 +1,7 @@
 import torch
 from pathlib import Path
 
-# Rutas (resolviendo desde el directorio raíz del repo)
+# Rutas
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = str(ROOT / "data" / "ResenasSiguenzaNuevo.xlsx")
 MODEL_DIR = str(ROOT / "models")

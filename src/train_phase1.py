@@ -24,7 +24,7 @@ model = BertForSequenceClassification.from_pretrained("dccuchile/bert-base-spani
 model.to(DEVICE)
 
 # -------------------
-# Trainer
+# Entrenamiento Fase 1
 # -------------------
 args = TrainingArguments(
     output_dir=f"{MODEL_DIR}/fase1",

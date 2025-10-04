@@ -33,7 +33,6 @@ def compute_metrics(eval_pred):
 # Limpieza de texto
 # ======================
 def limpiar_texto(texto, extra_stopwords=None):
-    # Try to load NLTK Spanish stopwords; if missing, attempt download; if still missing, fallback
     try:
         stop_words = set(stopwords.words("spanish"))
     except Exception:
@@ -42,7 +41,6 @@ def limpiar_texto(texto, extra_stopwords=None):
             nltk.download('stopwords', quiet=True)
             stop_words = set(stopwords.words("spanish"))
         except Exception:
-            # Fallback: use wordcloud STOPWORDS plus a minimal spanish stoplist
             stop_words = set(STOPWORDS)
             stop_words.update({
                 "de", "la", "que", "el", "en", "y", "a", "los", "se", "del", "las",
@@ -73,7 +71,7 @@ def extraer_bigrams(texts, top_n=10):
     Extrae los bigramas más frecuentes de un iterable de textos limpios (strings).
     Devuelve una lista de tuplas (bigram, conteo) ordenada por conteo desc.
     """
-    # Convert pandas Series or other iterables to a list of strings and filter empty values
+    # Convertir a lista de strings, ignorando nulos o vacíos
     try:
         texts_list = [str(t) for t in list(texts) if pd.notna(t) and str(t).strip()]
     except Exception:
@@ -85,7 +83,7 @@ def extraer_bigrams(texts, top_n=10):
         vec = CountVectorizer(ngram_range=(2, 2), stop_words='spanish')
         X = vec.fit_transform(texts_list)
     except Exception:
-        # fallback without stop_words if language not recognized
+        # Fallback sin stopwords si el idioma no es reconocido
         vec = CountVectorizer(ngram_range=(2, 2))
         X = vec.fit_transform(texts_list)
 

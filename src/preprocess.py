@@ -20,9 +20,9 @@ def tokenize_dataset(ds, tokenizer_path, max_length=128):
     return ds, tokenizer
 
 def map_labels_to_int(ds):
-    # Create the 'labels' column expected by Hugging Face Trainer and model
+    # Crea la columna 'labels' con valores 0/1
     ds = ds.map(lambda x: {"labels": 1 if x["label"] == "positiva" else 0})
-    # Remove the original text label column if present
+    # Remueve la columna original 'label'
     if "label" in ds.column_names:
         ds = ds.remove_columns(["label"])
     return ds

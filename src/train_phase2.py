@@ -27,7 +27,7 @@ for param in model.bert.encoder.layer[:8].parameters():
     param.requires_grad = False
 
 # -------------------
-# Trainer
+# Entrenamiento Fase 2
 # -------------------
 args2 = TrainingArguments(
     output_dir=f"{MODEL_DIR}/fase2",
