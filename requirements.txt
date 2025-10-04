@@ -1,0 +1,10 @@
+transformers==4.40.0
+torch==2.8.0
+numpy
+pandas
+scikit-learn
+matplotlib
+wordcloud
+reportlab
+nltk
+datasets
